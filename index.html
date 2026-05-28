@@ -512,6 +512,19 @@
     line-height: 0;
   }
   .info-map iframe { width: 100%; height: 320px; border: 0; display: block; }
+  .info-map-btn {
+    display: inline-flex; align-items: center; gap: 9px;
+    margin: 18px auto 0;
+    font-family: 'Oswald', sans-serif; font-weight: 600;
+    font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--white); background: var(--red);
+    text-decoration: none;
+    padding: 14px 28px;
+    transition: background 0.25s ease, transform 0.25s ease;
+  }
+  .info-map-btn:hover { background: var(--red-deep); transform: translateY(-2px); }
+  .info-map-btn svg { width: 16px; height: 16px; }
+  .info-map-wrap { text-align: center; }
 
   /* ============ FLOATING RESERVE (bottom-right) ============ */
   .float-reserve {
@@ -738,8 +751,14 @@
         <span class="info-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M5 5l14 14"/></svg>Non-smoking</span>
       </div>
 
-      <div class="info-map reveal">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3913.8017817583786!2d135.4956783!3d34.6688229!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e7b16b2c66cf%3A0x545100087d563061!2zV2FneXUgKEhhbGFsKSBSYW1lbiBOb29kbGUgRG90b25ib3JpIE5hbWJhIFJlc3RhdXJhbnQg5ZKM54mbIOmBk-mhv-WggCDmi4npnaIg6aSQ5Y6F!5e1!3m2!1sja!2sjp!4v1779956693320!5m2!1sja!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="King Wagyu Ramen Dotonbori location map"></iframe>
+      <div class="info-map-wrap">
+        <div class="info-map reveal">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3913.8017817583786!2d135.4956783!3d34.6688229!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e7b16b2c66cf%3A0x545100087d563061!2zV2FneXUgKEhhbGFsKSBSYW1lbiBOb29kbGUgRG90b25ib3JpIE5hbWJhIFJlc3RhdXJhbnQg5ZKM54mbIOmBk-mhv-WggCDmi4npnaIg6aSQ5Y6F!5e1!3m2!1sja!2sjp!4v1779956693320!5m2!1sja!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="King Wagyu Ramen Dotonbori location map"></iframe>
+        </div>
+        <a href="https://maps.app.goo.gl/Sp9i9PtFMNCSGmK66" target="_blank" rel="noopener" class="info-map-btn">
+          Open in Google Maps
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14L21 3"/></svg>
+        </a>
       </div>
     </div>
   </section>
