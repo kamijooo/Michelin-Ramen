@@ -45,12 +45,6 @@
     background: radial-gradient(circle, rgba(255,255,255,0.18) 0%, transparent 60%);
     animation: steamPulse 3s ease-in-out infinite;
   }
-  .open-flower {
-    width: 44px; height: 44px;
-    opacity: 0; transform: scale(0.6);
-    animation: popIn 0.7s cubic-bezier(.2,.8,.2,1) 0.2s forwards;
-    margin-bottom: 18px; z-index: 2;
-  }
   .open-michelin {
     font-family: 'Anton', sans-serif;
     font-size: 56px;
@@ -101,7 +95,6 @@
   }
   .header.scrolled { padding: 10px 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.25); }
   .header-logo { display: flex; align-items: center; gap: 9px; min-width: 0; }
-  .header-mark { width: 20px; height: 20px; flex-shrink: 0; }
   .header-text {
     font-family: 'Oswald', sans-serif;
     font-size: 11px; font-weight: 600;
@@ -125,7 +118,7 @@
   .hero {
     position: relative;
     min-height: 100vh; min-height: 100svh;
-    display: flex; align-items: center;
+    display: flex; align-items: flex-end;
     overflow: hidden;
     background: var(--red);
   }
@@ -140,19 +133,14 @@
   .hero-veil {
     position: absolute; inset: 0;
     background:
-      linear-gradient(180deg, rgba(209,1,0,0.55) 0%, rgba(26,17,16,0.15) 35%, rgba(26,17,16,0.35) 62%, rgba(122,0,0,0.88) 100%);
+      linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 45%, rgba(0,0,0,0.45) 75%, rgba(0,0,0,0.82) 100%);
   }
   .hero-content {
     position: relative; z-index: 2;
     width: 100%;
-    padding: 96px 24px 64px;
+    padding: 0 24px 56px;
     color: var(--white);
     text-align: center;
-  }
-  .hero-flower {
-    width: 32px; height: 32px;
-    margin: 0 auto 16px;
-    opacity: 0; animation: fadeIn 0.8s ease 3.2s forwards;
   }
   .hero-rule {
     width: 200px; max-width: 60%;
@@ -164,32 +152,35 @@
   @keyframes ruleIn { to { transform: scaleX(1); } }
   .hero-michelin {
     font-family: 'Anton', sans-serif;
-    font-size: 64px;
+    font-size: 52px;
     letter-spacing: 0.06em;
     line-height: 0.92;
     text-transform: uppercase;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
+    text-shadow: 0 2px 30px rgba(0,0,0,0.55);
     opacity: 0; transform: translateY(24px);
     animation: riseIn 0.9s cubic-bezier(.2,.8,.2,1) 3.4s forwards;
   }
   .hero-supervised {
     font-family: 'Oswald', sans-serif;
     font-weight: 300;
-    font-size: 15px;
+    font-size: 14px;
     letter-spacing: 0.5em;
     text-indent: 0.5em;
     text-transform: uppercase;
-    margin-bottom: 28px;
+    margin-bottom: 22px;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.5);
     opacity: 0;
     animation: fadeIn 0.8s ease 3.7s forwards;
   }
   .hero-title {
     font-family: 'Anton', sans-serif;
-    font-size: 34px;
+    font-size: 30px;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     line-height: 1;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.55);
     opacity: 0; transform: translateY(24px);
     animation: riseIn 0.9s cubic-bezier(.2,.8,.2,1) 3.9s forwards;
   }
@@ -198,8 +189,9 @@
     font-size: 14px;
     letter-spacing: 0.5em;
     text-indent: 0.5em;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.5);
     opacity: 0;
-    margin-bottom: 32px;
+    margin-bottom: 28px;
     animation: fadeIn 0.8s ease 4.2s forwards;
   }
   .hero-cta {
@@ -304,6 +296,63 @@
     color: var(--white);
   }
 
+  /* ============ FARM / BUTCHER ============ */
+  .farm { padding: 0; background: var(--cream); }
+  .farm-img {
+    width: 100%;
+    height: 56vh; max-height: 480px;
+    background-image: url('assets/farm.jpg');
+    background-size: cover; background-position: center;
+    position: relative;
+  }
+  .farm-img::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(26,17,16,0.45), transparent 55%);
+  }
+  .farm-tagline {
+    position: absolute; left: 0; right: 0; bottom: 28px; z-index: 2;
+    text-align: center;
+    color: var(--white);
+    font-family: 'Cormorant Garamond', 'Oswald', serif;
+    font-style: italic;
+    font-size: 22px;
+    letter-spacing: 0.02em;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.5);
+    padding: 0 24px;
+  }
+  .farm-body {
+    padding: 64px 24px;
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .farm-eyebrow {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.4em;
+    text-indent: 0.4em;
+    text-transform: uppercase;
+    color: var(--crimson, #A6121F);
+    margin-bottom: 14px;
+  }
+  .farm-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 34px;
+    line-height: 1.05;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    margin-bottom: 24px;
+    color: var(--ink);
+  }
+  .farm-rule { width: 56px; height: 4px; background: var(--red); margin: 0 auto 32px; }
+  .farm-text {
+    font-size: 16px;
+    line-height: 1.9;
+    color: #4a3a38;
+  }
+  .farm-text + .farm-text { margin-top: 18px; }
+
   /* ============ HALAL ============ */
   .halal { background: var(--red); color: var(--white); position: relative; overflow: hidden; }
   .halal::before {
@@ -384,7 +433,6 @@
 
   /* ============ FOOTER ============ */
   footer { background: var(--red-dark); color: rgba(255,255,255,0.7); padding: 52px 24px calc(96px + env(safe-area-inset-bottom)); text-align: center; }
-  .footer-mark { width: 30px; height: 30px; margin: 0 auto 18px; }
   .footer-name {
     font-family: 'Oswald', sans-serif;
     font-size: 13px;
@@ -423,7 +471,7 @@
 
   /* ============ DESKTOP ============ */
   @media (min-width: 700px) {
-    .hero-michelin { font-size: 110px; }
+    .hero-michelin { font-size: 84px; }
     .hero-title { font-size: 56px; }
     .hero-supervised { font-size: 18px; }
     section { padding: 110px 48px; }
@@ -432,6 +480,12 @@
     .pillar { flex: 1; }
     .gallery-big { height: 64vh; max-height: 620px; }
     .gallery-cell { height: 280px; }
+    .farm { padding: 0; }
+    .farm-img { height: 64vh; max-height: 600px; }
+    .farm-tagline { font-size: 30px; bottom: 40px; }
+    .farm-body { padding: 96px 48px; }
+    .farm-title { font-size: 52px; }
+    .farm-text { font-size: 18px; }
     .halal-emblem { width: 180px; height: 180px; }
     .quote-body { font-size: 38px; }
     .reserve-title { font-size: 72px; }
@@ -441,7 +495,7 @@
     .header-text { font-size: 13px; }
   }
   @media (min-width: 1000px) {
-    .hero-michelin { font-size: 140px; }
+    .hero-michelin { font-size: 104px; }
   }
 </style>
 </head>
@@ -449,15 +503,6 @@
 
 <!-- OPENING -->
 <div class="opening" id="opening">
-  <svg class="open-flower" viewBox="0 0 32 32" fill="none">
-    <circle cx="16" cy="16" r="2.5" fill="#fff"/>
-    <ellipse cx="16" cy="6.5" rx="2.6" ry="5" fill="#fff"/><ellipse cx="16" cy="25.5" rx="2.6" ry="5" fill="#fff"/>
-    <ellipse cx="6.5" cy="16" rx="5" ry="2.6" fill="#fff"/><ellipse cx="25.5" cy="16" rx="5" ry="2.6" fill="#fff"/>
-    <ellipse cx="9.4" cy="9.4" rx="4" ry="2.2" fill="#fff" transform="rotate(-45 9.4 9.4)"/>
-    <ellipse cx="22.6" cy="22.6" rx="4" ry="2.2" fill="#fff" transform="rotate(-45 22.6 22.6)"/>
-    <ellipse cx="22.6" cy="9.4" rx="4" ry="2.2" fill="#fff" transform="rotate(45 22.6 9.4)"/>
-    <ellipse cx="9.4" cy="22.6" rx="4" ry="2.2" fill="#fff" transform="rotate(45 9.4 22.6)"/>
-  </svg>
   <div class="open-michelin">MICHELIN</div>
   <div class="open-name">King Wagyu Ramen</div>
   <div class="open-bar"></div>
@@ -468,11 +513,6 @@
   <!-- HEADER -->
   <header class="header" id="header">
     <div class="header-logo">
-      <svg class="header-mark" viewBox="0 0 32 32" fill="none">
-        <circle cx="16" cy="16" r="2.5" fill="#fff"/>
-        <ellipse cx="16" cy="6.5" rx="2.6" ry="5" fill="#fff"/><ellipse cx="16" cy="25.5" rx="2.6" ry="5" fill="#fff"/>
-        <ellipse cx="6.5" cy="16" rx="5" ry="2.6" fill="#fff"/><ellipse cx="25.5" cy="16" rx="5" ry="2.6" fill="#fff"/>
-      </svg>
       <span class="header-text">King Wagyu Ramen · Dotonbori</span>
     </div>
     <a href="#reserve" class="header-reserve">Reserve</a>
@@ -483,11 +523,6 @@
     <div class="hero-img"></div>
     <div class="hero-veil"></div>
     <div class="hero-content">
-      <svg class="hero-flower" viewBox="0 0 32 32" fill="none">
-        <circle cx="16" cy="16" r="2.5" fill="#fff"/>
-        <ellipse cx="16" cy="6.5" rx="2.6" ry="5" fill="#fff"/><ellipse cx="16" cy="25.5" rx="2.6" ry="5" fill="#fff"/>
-        <ellipse cx="6.5" cy="16" rx="5" ry="2.6" fill="#fff"/><ellipse cx="25.5" cy="16" rx="5" ry="2.6" fill="#fff"/>
-      </svg>
       <div class="hero-rule"></div>
       <h1 class="hero-michelin">MICHELIN</h1>
       <div class="hero-supervised">Supervised</div>
@@ -548,6 +583,20 @@
     </div>
   </section>
 
+  <!-- FARM / BUTCHER -->
+  <section class="farm" id="farm">
+    <div class="farm-img reveal">
+      <div class="farm-tagline">From our family farm in Miyazaki</div>
+    </div>
+    <div class="farm-body">
+      <p class="farm-eyebrow reveal">Our Wagyu</p>
+      <h2 class="farm-title reveal">The 5th Generation<br>Wagyu Butcher</h2>
+      <div class="farm-rule reveal"></div>
+      <p class="farm-text reveal">As Wagyu craftsmen, we raise our cattle in Miyazaki using our own original blended feed, carefully developed to create truly delicious red meat. We are committed to producing Miyazaki Wagyu — highly regarded around the world and often considered equal to the finest Kobe Beef — while continuing to pursue the ideal balance of flavor, tenderness, and rich umami.</p>
+      <p class="farm-text reveal">One of the defining characteristics of Miyazaki Wagyu is the natural sweetness and rich aroma of the meat itself. For guests who truly appreciate authentic Wagyu and want to fully enjoy the texture, flavor, and character of the meat, we warmly invite you to experience it for yourself.</p>
+    </div>
+  </section>
+
   <!-- HALAL -->
   <section class="halal" id="halal">
     <div class="container">
@@ -591,11 +640,6 @@
 
   <!-- FOOTER -->
   <footer>
-    <svg class="footer-mark" viewBox="0 0 32 32" fill="none">
-      <circle cx="16" cy="16" r="2.5" fill="#fff"/>
-      <ellipse cx="16" cy="6.5" rx="2.6" ry="5" fill="#fff"/><ellipse cx="16" cy="25.5" rx="2.6" ry="5" fill="#fff"/>
-      <ellipse cx="6.5" cy="16" rx="5" ry="2.6" fill="#fff"/><ellipse cx="25.5" cy="16" rx="5" ry="2.6" fill="#fff"/>
-    </svg>
     <div class="footer-name">King Wagyu Ramen Michelin Supervised Halal Dotonbori Restaurant 米其林和牛拉面</div>
     <p>Recipes supervised by a Michelin Bib Gourmand chef. Not affiliated with Michelin.</p>
     <p>© King Wagyu Ramen Dotonbori. All rights reserved.</p>
