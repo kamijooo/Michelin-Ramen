@@ -469,11 +469,81 @@
   .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s ease, transform 0.8s ease; }
   .reveal.in { opacity: 1; transform: translateY(0); }
 
+  /* ============ INFO (store details) ============ */
+  .info { background: var(--cream); }
+  .info-grid {
+    display: flex; flex-direction: column;
+    gap: 0;
+    max-width: 720px; margin: 0 auto;
+    border-top: 1px solid rgba(26,17,16,0.12);
+  }
+  .info-row {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 18px 4px;
+    border-bottom: 1px solid rgba(26,17,16,0.12);
+  }
+  .info-icon {
+    flex-shrink: 0; width: 22px; height: 22px;
+    color: var(--red); margin-top: 2px;
+  }
+  .info-text { font-size: 15px; line-height: 1.6; color: #2e2422; }
+  .info-text a { color: var(--red); text-decoration: none; }
+  .info-text a:hover { text-decoration: underline; }
+  .info-features {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    max-width: 720px; margin: 36px auto 0;
+    justify-content: center;
+  }
+  .info-tag {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: var(--white);
+    border: 1px solid rgba(26,17,16,0.12);
+    padding: 9px 16px;
+    border-radius: 999px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px; letter-spacing: 0.04em;
+    color: #2e2422;
+  }
+  .info-tag svg { width: 16px; height: 16px; color: var(--red); flex-shrink: 0; }
+  .info-map {
+    max-width: 720px; margin: 40px auto 0;
+    border-radius: 4px; overflow: hidden;
+    border: 1px solid rgba(26,17,16,0.12);
+    line-height: 0;
+  }
+  .info-map iframe { width: 100%; height: 320px; border: 0; display: block; }
+
+  /* ============ FLOATING RESERVE (bottom-right) ============ */
+  .float-reserve {
+    position: fixed; z-index: 95;
+    right: 20px; bottom: 84px;
+    display: none;
+    align-items: center; gap: 10px;
+    background: var(--red); color: var(--white);
+    font-family: 'Oswald', sans-serif; font-weight: 600;
+    font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 22px;
+    border-radius: 999px;
+    box-shadow: 0 8px 28px rgba(122,0,0,0.4);
+    transition: transform 0.25s ease, background 0.25s ease;
+    opacity: 0;
+    animation: floatIn 0.5s ease 4.8s forwards;
+  }
+  .float-reserve:hover { background: var(--red-deep); transform: translateY(-2px); }
+  .float-reserve svg { transition: transform 0.25s ease; }
+  .float-reserve:hover svg { transform: translateX(3px); }
+  @keyframes floatIn { to { opacity: 1; } }
+
   /* ============ DESKTOP ============ */
   @media (min-width: 700px) {
-    .hero-michelin { font-size: 84px; }
+    .hero-michelin { font-size: 68px; }
     .hero-title { font-size: 56px; }
     .hero-supervised { font-size: 18px; }
+    .hero-content { padding: 0 48px 72px; max-width: 760px; margin: 0 auto; }
+    .hero-veil {
+      background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.4) 68%, rgba(0,0,0,0.85) 100%);
+    }
     section { padding: 110px 48px; }
     .section-title { font-size: 56px; }
     .pillars { flex-direction: row; }
@@ -490,12 +560,13 @@
     .quote-body { font-size: 38px; }
     .reserve-title { font-size: 72px; }
     .sticky-cta { display: none; }
+    .float-reserve { display: inline-flex; bottom: 24px; right: 24px; font-size: 14px; padding: 16px 28px; }
     footer { padding-bottom: 52px; }
     .header { padding: 16px 48px; }
     .header-text { font-size: 13px; }
   }
   @media (min-width: 1000px) {
-    .hero-michelin { font-size: 104px; }
+    .hero-michelin { font-size: 80px; }
   }
 </style>
 </head>
@@ -515,7 +586,7 @@
     <div class="header-logo">
       <span class="header-text">King Wagyu Ramen · Dotonbori</span>
     </div>
-    <a href="#reserve" class="header-reserve">Reserve</a>
+    <a href="https://www.tablecheck.com/shops/halal-wagyu-namba/reserve?utm_source=hp" target="_blank" rel="noopener" class="header-reserve">Reserve</a>
   </header>
 
   <!-- HERO -->
@@ -528,7 +599,7 @@
       <div class="hero-supervised">Supervised</div>
       <div class="hero-title">King Wagyu Ramen</div>
       <div class="hero-cn">米 其 林 和 牛 拉 面</div>
-      <a href="#reserve" class="hero-cta">
+      <a href="https://www.tablecheck.com/shops/halal-wagyu-namba/reserve?utm_source=hp" target="_blank" rel="noopener" class="hero-cta">
         Reserve a seat
         <svg width="18" height="10" viewBox="0 0 18 10" fill="none"><path d="M0 5h16M12 1l4 4-4 4" stroke="currentColor" stroke-width="1.4"/></svg>
       </a>
@@ -571,14 +642,6 @@
     <div class="gallery-track">
       <div class="gallery-big reveal" style="background-image: url('assets/ramen1.jpg');">
         <span class="gallery-label">The signature bowl</span>
-      </div>
-      <div class="gallery-row">
-        <div class="gallery-cell reveal" style="background-image: url('https://images.unsplash.com/photo-1557872943-16a5ac26437e?w=1000&q=90');">
-          <span class="gallery-label">Wagyu</span>
-        </div>
-        <div class="gallery-cell reveal" style="background-image: url('https://images.unsplash.com/photo-1632709810780-b5a4343cebcd?w=1000&q=90');">
-          <span class="gallery-label">The broth</span>
-        </div>
       </div>
     </div>
   </section>
@@ -631,10 +694,53 @@
       <p class="eyebrow reveal">Reservations</p>
       <h2 class="reserve-title reveal">A seat at the table<br>awaits you</h2>
       <p class="reserve-text reveal">Seating is limited. Secure your place in advance and experience the bowl at its finest, in the heart of Dotonbori.</p>
-      <a href="#" class="reserve-cta reveal">
+      <a href="https://www.tablecheck.com/shops/halal-wagyu-namba/reserve?utm_source=hp" target="_blank" rel="noopener" class="reserve-cta reveal">
         Reserve now
         <svg width="18" height="10" viewBox="0 0 18 10" fill="none"><path d="M0 5h16M12 1l4 4-4 4" stroke="currentColor" stroke-width="1.4"/></svg>
       </a>
+    </div>
+  </section>
+
+  <!-- INFO -->
+  <section class="info" id="info">
+    <div class="container">
+      <p class="eyebrow reveal">Restaurant Information</p>
+      <h2 class="section-title reveal">Visit us in Dotonbori</h2>
+      <div class="red-rule reveal"></div>
+      <div class="info-grid reveal">
+        <div class="info-row">
+          <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div class="info-text"><a href="tel:07023884392">070-2388-4392</a></div>
+        </div>
+        <div class="info-row">
+          <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <div class="info-text">Open daily 11:00 – 23:00</div>
+        </div>
+        <div class="info-row">
+          <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div class="info-text"><a href="https://maps.app.goo.gl/Sp9i9PtFMNCSGmK66" target="_blank" rel="noopener">Parkland Building 1F, 2-1-3 Dotonbori, Chuo-ku, Osaka-shi, Osaka 542-0071, Japan</a></div>
+        </div>
+        <div class="info-row">
+          <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+          <div class="info-text">Cashless only. Credit cards and mobile payments accepted.</div>
+        </div>
+        <div class="info-row">
+          <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21V10l9-7 9 7v11a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+          <div class="info-text">31 seats</div>
+        </div>
+      </div>
+
+      <div class="info-features reveal">
+        <span class="info-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11h18M5 11V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4M4 11l1 8h14l1-8"/></svg>Halal-friendly menu</span>
+        <span class="info-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v12H5.17L4 17.17V4z"/><path d="M8 9h8M8 12h5"/></svg>Takeout available</span>
+        <span class="info-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="5" r="2"/><path d="M5 21a7 7 0 0 1 14 0M12 7v7"/></svg>Child-friendly / Stroller accessible</span>
+        <span class="info-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 13a10 10 0 0 1 14 0M8.5 16.5a5 5 0 0 1 7 0M2 9a15 15 0 0 1 20 0"/><circle cx="12" cy="20" r="1"/></svg>Free Wi-Fi</span>
+        <span class="info-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M5 5l14 14"/></svg>Non-smoking</span>
+      </div>
+
+      <div class="info-map reveal">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3913.8017817583786!2d135.4956783!3d34.6688229!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e7b16b2c66cf%3A0x545100087d563061!2zV2FneXUgKEhhbGFsKSBSYW1lbiBOb29kbGUgRG90b25ib3JpIE5hbWJhIFJlc3RhdXJhbnQg5ZKM54mbIOmBk-mhv-WggCDmi4npnaIg6aSQ5Y6F!5e1!3m2!1sja!2sjp!4v1779956693320!5m2!1sja!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="King Wagyu Ramen Dotonbori location map"></iframe>
+      </div>
     </div>
   </section>
 
@@ -647,13 +753,19 @@
 
 </div>
 
-<!-- STICKY -->
-<a href="#reserve" class="sticky-cta" style="text-decoration:none;">
+<!-- STICKY (mobile bottom bar) -->
+<a href="https://www.tablecheck.com/shops/halal-wagyu-namba/reserve?utm_source=hp" target="_blank" rel="noopener" class="sticky-cta" style="text-decoration:none;">
   <div class="sticky-text">
     <span class="l">Seating is limited</span>
-    <span class="v">Reserve your seat</span>
+    <span class="v">Check availability</span>
   </div>
   <span class="sticky-btn">Reserve</span>
+</a>
+
+<!-- FLOATING (desktop bottom-right) -->
+<a href="https://www.tablecheck.com/shops/halal-wagyu-namba/reserve?utm_source=hp" target="_blank" rel="noopener" class="float-reserve">
+  Check availability
+  <svg width="16" height="10" viewBox="0 0 18 10" fill="none"><path d="M0 5h16M12 1l4 4-4 4" stroke="currentColor" stroke-width="1.4"/></svg>
 </a>
 
 <script>
