@@ -1,0 +1,13 @@
+{
+  "name": "michelin-ramen-lp",
+  "version": "1.0.0",
+  "description": "Michelin Ramen multi-store LP (Eleventy)",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve",
+    "watch": "eleventy --watch"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}
