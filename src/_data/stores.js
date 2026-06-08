@@ -17,9 +17,9 @@ module.exports = {
       region: "osaka",
       slug: "namba",
       // ===== 店名 =====
-      name_full_en: "King Wagyu Ramen Michelin Supervised Halal Dotonbori Restaurant 米其林和牛拉面",
+      name_full_en: "King Wagyu Ramen Michelin Chef Supervised Halal Dotonbori Restaurant 米其林厨师监督和牛拉面",
       name_short: "King Wagyu Ramen",
-      name_cn: "米其林和牛拉面",
+      name_cn: "米其林厨师监督和牛拉面",
       name_meta: "King Wagyu Ramen · Dotonbori · Halal",
       // ===== 立地 =====
       city: "Dotonbori",
